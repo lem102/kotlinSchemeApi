@@ -2,7 +2,7 @@
   (jacob-web-request-helper "POST"
                             "http://localhost:8080/lexer"
                             '(("content-type" . "application/json; charset=utf-8"))
-                            (json-encode '(("sourceCode" . "a"))))
+                            (json-encode '(("sourceCode" . "(apple-banana)test"))))
 #+end_src
 
 #+RESULTS:
@@ -10,22 +10,34 @@
 HTTP/1.1 200 
 Content-Type: application/json
 Transfer-Encoding: chunked
-Date: Sat, 28 May 2022 09:18:09 GMT
+Date: Sat, 28 May 2022 19:32:33 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
 [
     {
-        "endPosition": 0,
-        "startPosition": 0,
-        "value": "apple",
-        "type": "identifier"
+        "endIndex": 1,
+        "startIndex": 0,
+        "value": "",
+        "type": "OPENING_PARENTHESIS"
     },
     {
-        "endPosition": 0,
-        "startPosition": 5,
-        "value": "banana",
-        "type": "identifier"
+        "endIndex": 13,
+        "startIndex": 1,
+        "value": "apple-banana",
+        "type": "IDENTIFIER"
+    },
+    {
+        "endIndex": 14,
+        "startIndex": 13,
+        "value": "",
+        "type": "CLOSING_PARENTHESIS"
+    },
+    {
+        "endIndex": 18,
+        "startIndex": 14,
+        "value": "test",
+        "type": "IDENTIFIER"
     }
 ]
 #+end_example
