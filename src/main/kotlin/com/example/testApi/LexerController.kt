@@ -1,6 +1,9 @@
 package com.example.testApi
 
-import com.example.testApi.performLexicalAnalysis
+import com.example.testApi.lexicalAnalysis.performLexicalAnalysis
+import com.example.testApi.lexicalAnalysis.Token
+import com.example.testApi.parsing.performParsing
+import com.example.testApi.parsing.SExpression
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -29,6 +32,12 @@ class LexerController {
     @PostMapping("lexer")
     fun performLexicalAnalysis(@RequestBody inputProgram: InputProgram):ResponseEntity<List<Token>> {
         val output = performLexicalAnalysis(inputProgram.sourceCode)
+        return ResponseEntity(output, HttpStatus.OK)
+    }
+
+    @PostMapping("parser")
+    fun performParsing(@RequestBody inputProgram: InputProgram):ResponseEntity<List<SExpression>> {
+        val output = performParsing(performLexicalAnalysis(inputProgram.sourceCode))
         return ResponseEntity(output, HttpStatus.OK)
     }
 }
