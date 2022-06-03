@@ -31,13 +31,16 @@ class LexerController {
 
     @PostMapping("lexer")
     fun performLexicalAnalysis(@RequestBody inputProgram: InputProgram):ResponseEntity<List<Token>> {
-        val output = performLexicalAnalysis(inputProgram.sourceCode)
+        val output = inputProgram.sourceCode
+            .let { performLexicalAnalysis(it) }
         return ResponseEntity(output, HttpStatus.OK)
     }
 
     @PostMapping("parser")
     fun performParsing(@RequestBody inputProgram: InputProgram):ResponseEntity<List<SExpression>> {
-        val output = performParsing(performLexicalAnalysis(inputProgram.sourceCode))
+        val output = inputProgram.sourceCode
+            .let { performLexicalAnalysis(it) }
+            .let { performParsing(it) }
         return ResponseEntity(output, HttpStatus.OK)
     }
 }

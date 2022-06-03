@@ -49,7 +49,7 @@ fun performParsing(tokens: List<Token>): List<SExpression> {
             TokenType.IDENTIFIER -> go(tail, sexps + IdentifierAtom(token.value))
             TokenType.STRING -> go(tail, sexps + StringAtom(token.value))
             TokenType.OPENING_PARENTHESIS -> go(skipToClosingParen(tail), sexps + SExpressionList(go(tail, listOf())))
-            else -> throw Exception("unrecognised type")
+            else -> throw Exception("invalid token")
         }
     }
 

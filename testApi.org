@@ -51,7 +51,7 @@ Connection: keep-alive
                             "http://localhost:8080/parser"
                             '(("content-type" . "application/json; charset=utf-8"))
                             (json-encode '(("sourceCode" .
-                                            "(1 2 3 test(4 7 8 (9 \"apple\" 0))) 5 6 "
+                                            "(1 2 3 tes(4 7 8 (9 \"apple\" 0))) 5 6 "
                                             ))))
 #+end_src
 
@@ -60,7 +60,7 @@ Connection: keep-alive
 HTTP/1.1 200 
 Content-Type: application/json
 Transfer-Encoding: chunked
-Date: Thu, 02 Jun 2022 06:57:03 GMT
+Date: Thu, 02 Jun 2022 07:09:03 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
@@ -77,7 +77,7 @@ Connection: keep-alive
                 "value": 3.0
             },
             {
-                "identifier": "test"
+                "identifier": "tes"
             },
             {
                 "expressions": [
