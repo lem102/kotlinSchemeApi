@@ -1,10 +1,12 @@
 package com.example.testApi.parsing
 
-class NumberAtom(val value: Float) : Atom {
+import com.example.testApi.lexicalAnalysis.Position
 
-    constructor(value: String):this(value.toFloat())
-    
+class NumberAtom(val value: Float, override val start: Position, override val end: Position) : Atom {
+
+    constructor(value: String, start : Position, end : Position):this(value.toFloat(), start, end)
+
     override fun toString(): String {
-        return "NumberAtom($value)"
+        return "NumberAtom($value) at row $start.row, $start.column"
     }
 }

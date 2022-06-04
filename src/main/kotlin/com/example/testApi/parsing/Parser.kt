@@ -45,10 +45,10 @@ fun performParsing(tokens: List<Token>): List<SExpression> {
         return when (token?.type) {
             null -> sexps
             TokenType.CLOSING_PARENTHESIS -> sexps
-            TokenType.NUMBER -> go(tail, sexps + NumberAtom(token.value))
-            TokenType.IDENTIFIER -> go(tail, sexps + IdentifierAtom(token.value))
-            TokenType.STRING -> go(tail, sexps + StringAtom(token.value))
-            TokenType.OPENING_PARENTHESIS -> go(skipToClosingParen(tail), sexps + SExpressionList(go(tail, listOf())))
+            TokenType.NUMBER -> go(tail, sexps + NumberAtom(token.value, token.start, token.end))
+            TokenType.IDENTIFIER -> go(tail, sexps + IdentifierAtom(token.value, token.start, token.end))
+            TokenType.STRING -> go(tail, sexps + StringAtom(token.value, token.start, token.end))
+            TokenType.OPENING_PARENTHESIS -> go(skipToClosingParen(tail), sexps + SExpressionList(go(tail, listOf()), token.start, token.end))
             else -> throw Exception("invalid token")
         }
     }

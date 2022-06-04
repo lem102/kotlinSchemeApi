@@ -12,7 +12,7 @@
 HTTP/1.1 200 
 Content-Type: application/json
 Transfer-Encoding: chunked
-Date: Wed, 01 Jun 2022 12:37:34 GMT
+Date: Fri, 03 Jun 2022 08:55:35 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
@@ -51,67 +51,16 @@ Connection: keep-alive
                             "http://localhost:8080/parser"
                             '(("content-type" . "application/json; charset=utf-8"))
                             (json-encode '(("sourceCode" .
-                                            "(1 2 3 tes(4 7 8 (9 \"apple\" 0))) 5 6 "
+                                            "; test"
                                             ))))
 #+end_src
 
 #+RESULTS:
-#+begin_example
-HTTP/1.1 200 
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Thu, 02 Jun 2022 07:09:03 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-[
-    {
-        "expressions": [
-            {
-                "value": 1.0
-            },
-            {
-                "value": 2.0
-            },
-            {
-                "value": 3.0
-            },
-            {
-                "identifier": "tes"
-            },
-            {
-                "expressions": [
-                    {
-                        "value": 4.0
-                    },
-                    {
-                        "value": 7.0
-                    },
-                    {
-                        "value": 8.0
-                    },
-                    {
-                        "expressions": [
-                            {
-                                "value": 9.0
-                            },
-                            {
-                                "value": "apple"
-                            },
-                            {
-                                "value": 0.0
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "value": 5.0
-    },
-    {
-        "value": 6.0
-    }
-]
-#+end_example
+: HTTP/1.1 200 
+: Content-Type: application/json
+: Transfer-Encoding: chunked
+: Date: Sat, 04 Jun 2022 09:28:18 GMT
+: Keep-Alive: timeout=60
+: Connection: keep-alive
+: 
+: []

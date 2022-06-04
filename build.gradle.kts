@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
 	id("org.springframework.boot") version "2.7.0"
@@ -32,4 +33,14 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+    testLogging {
+        events = mutableSetOf<TestLogEvent>(TestLogEvent.PASSED,
+                                            TestLogEvent.SKIPPED,
+                                            TestLogEvent.FAILED,
+                                            TestLogEvent.STANDARD_OUT,
+                                            TestLogEvent.STANDARD_ERROR)
+    }
+
 }
+
+

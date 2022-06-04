@@ -1,6 +1,6 @@
 package com.example.testApi.lexicalAnalysis
 
-data class IndexToken(val type: TokenType, val value: String, val startIndex: Int, val endIndex: Int) {
-    constructor(protoToken: ProtoToken, type: TokenType, startIndex: Int, endIndex: Int = protoToken.endIndex)
-        :this(type, protoToken.value, startIndex, endIndex)
+data class IndexToken(val type: TokenType, val value: String, val start: Int, val end: Int) {
+    constructor(protoToken: ProtoToken, type: TokenType, start: Int, end: Int = protoToken.end)
+        :this(type, protoToken.value, start, end)
 }

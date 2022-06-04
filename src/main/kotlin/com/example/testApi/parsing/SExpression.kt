@@ -1,3 +1,8 @@
 package com.example.testApi.parsing
 
-interface SExpression
+import com.example.testApi.lexicalAnalysis.Position
+
+interface SExpression {
+    val start: Position
+    val end: Position
+}
