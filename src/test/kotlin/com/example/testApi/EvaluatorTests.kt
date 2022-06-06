@@ -27,10 +27,28 @@ class EvaluatorTests {
         Assertions.assertTrue(output[0] == "test")
     }
 
+    // @Test
+    // fun oneIdentifierAtomEvaluatesToItsValue() {
+    //     val input = listOf(IdentifierAtom("test", Position(0, 0), Position(0, 0)))
+    //     val output = performEvaluation(input)
+    //     Assertions.assertTrue(output[0] == "test")
+    // }
+
     @Test
-    fun oneIdentifierAtomEvaluatesToItsValue() {
-        val input = listOf(IdentifierAtom("test", Position(0, 0), Position(0, 0)))
+    fun multipleAtomsEvaluateToTheirValues() {
+        val input = listOf(NumberAtom(5.0f, Position(0,0), Position(0,0)),
+                           StringAtom("test", Position(0,0), Position(0,0)))
         val output = performEvaluation(input)
-        Assertions.assertTrue(output[0] == "test")
+        Assertions.assertTrue(output[0] == 5.0f)
+        Assertions.assertTrue(output[1] == "test")
     }
+
+    @Test
+    fun identifierForBuiltInFunctionEvaluatesToThatFunction() {
+        val input = listOf(IdentifierAtom("add", Position(0, 0), Position(0, 0)))
+        val output = performEvaluation(input)
+        val result = (output[0] as (Int, Int) -> Int)(2,3)
+        Assertions.assertTrue(result == 5)
+    }
+    
 }
