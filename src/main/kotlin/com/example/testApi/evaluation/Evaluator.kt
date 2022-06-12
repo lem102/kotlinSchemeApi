@@ -1,13 +1,17 @@
-package  com.example.testApi.evaluation
+package com.example.testApi
 
-import com.example.testApi.parsing.SExpression
-import com.example.testApi.parsing.NumberAtom
-import com.example.testApi.parsing.StringAtom
-import com.example.testApi.parsing.IdentifierAtom
-import com.example.testApi.parsing.SExpressionList
+val addClosure = Closure(BuiltInFunction("add",
+                                         fun (numbers: List<NumberAtom>): NumberAtom {
+                                             return NumberAtom(numbers[0].value + numbers[1].value,
+                                                               numbers[0],
+                                                               numbers[1].end)
+                                         }
+                         ),
+                         mapOf(),
+                         Position(0, 0),
+                         Position(0, 0))
 
-val symbolTable = mapOf<String, Any>("add" to { x: Int, y: Int -> x + y },
-                                     "subtract" to { x: Int, y: Int -> x - y })
+val lexicalEnvironment = mapOf<String, Closure>("add" to addClosure)
 
 fun performEvaluation(sexps: List<SExpression>): List<Any> {
 
@@ -16,13 +20,13 @@ fun performEvaluation(sexps: List<SExpression>): List<Any> {
         val tail = sexps.drop(1)
         return when (sexp) {
             null -> results
-            is NumberAtom -> go(tail, results + sexp.value)
-            is StringAtom -> go(tail, results + sexp.value)
+            is NumberAtom -> go(tail, results + sexp)
+            is StringAtom -> go(tail, results + sexp)
             // need to implement symbol table that can be searched
-            is IdentifierAtom -> go(tail, results + symbolTable.getValue(sexp.identifier))
+            is IdentifierAtom -> go(tail, results + lexicalEnvironment.getValue(sexp.identifier))
             // most complex case. evaluate all the expressions, then work out the result of the function call
-            is SExpressionList -> throw Exception("not implemented")
-            else -> throw Exception()
+            // is SExpressionList -> go(tail, results + callFunction(sexp.expressions))
+            else -> throw Exception("unhandled SExpression")
         }
     }
     

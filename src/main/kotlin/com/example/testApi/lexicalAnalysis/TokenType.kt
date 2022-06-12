@@ -1,4 +1,4 @@
-package com.example.testApi.lexicalAnalysis
+package com.example.testApi
 
 enum class TokenType {
     UNKOWN,

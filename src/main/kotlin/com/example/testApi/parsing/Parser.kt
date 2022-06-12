@@ -1,7 +1,4 @@
-package com.example.testApi.parsing
-
-import com.example.testApi.lexicalAnalysis.Token
-import com.example.testApi.lexicalAnalysis.TokenType
+package com.example.testApi
 
 fun skipToClosingParen(tokens: List<Token>): List<Token> {
 

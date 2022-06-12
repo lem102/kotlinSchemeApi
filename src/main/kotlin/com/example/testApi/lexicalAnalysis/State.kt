@@ -1,4 +1,4 @@
-package com.example.testApi.lexicalAnalysis
+package com.example.testApi
 
 enum class State {
     INITIAL_STATE,

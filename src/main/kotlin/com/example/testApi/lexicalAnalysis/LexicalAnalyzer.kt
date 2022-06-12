@@ -1,4 +1,4 @@
-package com.example.testApi.lexicalAnalysis
+package com.example.testApi
 
 fun Char.isUnicodeNullOrLineEnd(): Boolean =
     this == '\u9216' || this.toString().matches(Regex("\\R"))

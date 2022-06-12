@@ -1,10 +1,5 @@
 package com.example.testApi
 
-import com.example.testApi.lexicalAnalysis.performLexicalAnalysis
-import com.example.testApi.lexicalAnalysis.Token
-import com.example.testApi.parsing.performParsing
-import com.example.testApi.parsing.SExpression
-
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

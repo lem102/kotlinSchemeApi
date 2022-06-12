@@ -4,16 +4,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.assertThrows
 import org.springframework.boot.test.context.SpringBootTest
-import com.example.testApi.lexicalAnalysis.performLexicalAnalysis
-import com.example.testApi.lexicalAnalysis.TokenType
-import com.example.testApi.lexicalAnalysis.Position
-import com.example.testApi.lexicalAnalysis.Token
-import com.example.testApi.parsing.performParsing
-import com.example.testApi.parsing.NumberAtom
-import com.example.testApi.parsing.SExpression
-import com.example.testApi.parsing.StringAtom
-import com.example.testApi.parsing.IdentifierAtom
-import com.example.testApi.parsing.SExpressionList
 
 @SpringBootTest
 class ParserTests {

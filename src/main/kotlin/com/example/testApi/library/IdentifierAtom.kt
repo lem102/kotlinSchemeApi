@@ -1,6 +1,4 @@
-package com.example.testApi.parsing
-
-import com.example.testApi.lexicalAnalysis.Position
+package com.example.testApi
 
 class IdentifierAtom(val identifier: String, override val start: Position, override val end: Position) : Atom {
     override fun toString(): String {

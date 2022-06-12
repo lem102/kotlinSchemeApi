@@ -3,10 +3,6 @@ package com.example.testApi
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
 import org.springframework.boot.test.context.SpringBootTest
-import com.example.testApi.lexicalAnalysis.performLexicalAnalysis
-import com.example.testApi.lexicalAnalysis.TokenType
-import com.example.testApi.lexicalAnalysis.Position
-import com.example.testApi.lexicalAnalysis.Token
 
 @SpringBootTest
 class LexicalAnalysisTests {
