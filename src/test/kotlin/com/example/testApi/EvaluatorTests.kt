@@ -34,12 +34,8 @@ class EvaluatorTests {
     @Test
     fun identifierForBuiltInFunctionEvaluatesToThatFunction() {
         val input = listOf(IdentifierAtom("add", Position(0, 0), Position(0, 0)))
-        val output = performEvaluation(input)
-        val arg1 = NumberAtom(2.0f, Position(0,0), Position(0,0))
-        val arg2 = NumberAtom(3.0f, Position(0,0), Position(0,0))
-        val result = (output[0] as (Position, Position, NumberAtom, NumberAtom) -> NumberAtom)(Position(0,0), Position(0,0), arg1,arg2)
-        println(result.value)
-        Assertions.assertTrue(result.value == 5.0f)
+        val output = performEvaluation(input)[0] as ClosureAtom
+        Assertions.assertTrue(output.function.name == "add")
     }
     
 }

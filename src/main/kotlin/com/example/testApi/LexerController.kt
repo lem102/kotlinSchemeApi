@@ -38,4 +38,13 @@ class LexerController {
             .let { performParsing(it) }
         return ResponseEntity(output, HttpStatus.OK)
     }
+
+    @PostMapping("evaluator")
+    fun performEvaluation(@RequestBody inputProgram: InputProgram):ResponseEntity<List<SExpression>> {
+        val output = inputProgram.sourceCode
+            .let { performLexicalAnalysis(it) }
+            .let { performParsing(it) }
+            .let { performEvaluation(it) }
+        return ResponseEntity(output, HttpStatus.OK)
+    }
 }
